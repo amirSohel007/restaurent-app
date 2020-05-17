@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Jost:wght@300;400&display=swap');
 
 body {font-family: 'Jost', sans-serif;}
-h1,h2,h3,h4,h5 {font-family: 'Comfortaa', cursive;}
+h1,h2,h3,h4,h5,label {font-family: 'Comfortaa', cursive;}
+label {
+    font-size: 14px;
+    color: #252525;
+}
 
 h1 {
     font-weight: bold;
@@ -133,4 +137,13 @@ footer {
 
 .badge-success {
     background-color: #FF5722;
+}
+
+
+select {
+    background: url(https://cdn.iconscout.com/icon/free/png-256/down-arrow-16-460295.png) no-repeat;
+    background-size: 24px;
+    background-position: right 7px;
+    color: #313131;
+    cursor: pointer;
 }
