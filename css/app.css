@@ -29,7 +29,9 @@ h1 {
 .search-filter input {
     border-radius: 1px;
     min-height: 46px;
-    font-size: 16px;
+    font-size: 13px;
+    font-family: 'Comfortaa', cursive;
+    color: #231b1b;
 }
 
 
@@ -146,4 +148,10 @@ select {
     background-position: right 7px;
     color: #313131;
     cursor: pointer;
+}
+
+.heart {
+    width: 18px;
+    position: relative;
+    top: -2px;
 }
