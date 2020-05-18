@@ -11,7 +11,7 @@ async function fetchStores(){
     const responce = await fetch('https://raw.githubusercontent.com/amirSohel007/restaurent-app/master/restaurents.json')
     const data = await responce.json()
     //assign the data to allRestaurents array
-    allRestaurents = data.restaurants;  //Make sure our container is empety
+    allRestaurents = data.restaurants;
     renderRestaurentCardsView(data.restaurants);
 }
 
@@ -40,7 +40,7 @@ function renderHTML(restro){
 
 //Loop on Restaurents Object for genrate HTML
 function renderRestaurentCardsView(restaurants) {
-  restaurants_wrapper.innerHTML = ''; 
+  restaurants_wrapper.innerHTML = '';  //Make sure our container is empety
   restaurants.forEach(renderHTML)
 }
 
