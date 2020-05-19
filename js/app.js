@@ -44,6 +44,8 @@ function renderRestaurentCardsView(restaurants) {
   restaurants.forEach(renderHTML)
 }
 
+
+
 //Sort By Raiting
 raiting.addEventListener('change', sortByRaiting)
 
@@ -56,35 +58,33 @@ price.addEventListener('change', sortByPrice)
 //Search by Keywords
 search.addEventListener('input', searchRestaurents)
 
+function sortByRaiting(e){
+  const filteredbyRaiting = allRestaurents.filter(restro => (restro.raiting === parseInt(e.target.value)))
+  filterdView(filteredbyRaiting)
+}
+
+function sortByDishes(e){
+  const filteredbyDishes = allRestaurents.filter(restro => (restro.type === e.target.value))
+  filterdView(filteredbyDishes)
+}
+
+function sortByPrice(e){
+  const filteredbyPrice = allRestaurents.filter(restro => (restro.price < e.target.value))
+  filterdView(filteredbyPrice)
+}
 
 function filterdView(filterdArray){
   filterdArray.length > 0 ? renderRestaurentCardsView(filterdArray) : restaurants_wrapper.innerHTML = `<p class="col-sm-12"> No result found !</p>`
 }
 
-function sortByRaiting(e){
-  let filteredbyRaiting = allRestaurents.filter(restro => (restro.raiting === parseInt(e.target.value)))
-  filterdView(filteredbyRaiting)
-}
-
-function sortByDishes(e){
-  let filteredbyDishes = allRestaurents.filter(restro => (restro.type === e.target.value))
-  filterdView(filteredbyDishes)
-}
-
-function searchRestaurents(){
-let restaurantsTitle = document.querySelectorAll('.restaurent-title')
-let restroCards = [...restaurantsTitle]
-restroCards.forEach(restro => {
-  if(restro.innerHTML.toLowerCase().includes(search.value.toLowerCase()))
-    restro.parentElement.parentNode.parentNode.style.display = "block"
-  else 
-    restro.parentElement.parentNode.parentNode.style.display = "none"
-})
-}
-
-function sortByPrice(e){
-  let filteredbyPrice = allRestaurents.filter(restro => (restro.price < e.target.value))
-  filterdView(filteredbyPrice)
+function searchRestaurents() {
+  const restaurantsTitle = document.querySelectorAll(".restaurent-title");
+  const restroCards = [...restaurantsTitle];
+  restroCards.forEach((restro) => {
+    if (restro.innerHTML.toLowerCase().includes(search.value.toLowerCase()))
+      restro.parentElement.parentNode.parentNode.style.display = "block";
+    else restro.parentElement.parentNode.parentNode.style.display = "none";
+  });
 }
 
 //Genrate start rating based on number argument
