@@ -255,3 +255,11 @@ span.count {
     background-color: darkgrey;
     outline: 1px solid slategrey;
   }
+
+  @media (max-width:767px){
+    .drodown-list {
+        position: absolute;
+        right: 20px;
+        top: -35px;
+    }
+  }

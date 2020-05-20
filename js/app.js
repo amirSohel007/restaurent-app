@@ -9,9 +9,7 @@ let favRestaurents = [];
 
 //Server calling for fetching restaurents
 async function fetchStores() {
-  const responce = await fetch(
-    "https://raw.githubusercontent.com/amirSohel007/restaurent-app/master/restaurents.json"
-  );
+  const responce = await fetch("http://shorturl.at/dgqyJ");
   const data = await responce.json();
   //assign the data to allRestaurents array
   allRestaurents = data.restaurants;
@@ -68,25 +66,19 @@ restaurants_wrapper.addEventListener("click", addedToFav);
 
 //sort restaurents by raiting
 function sortByRaiting(e) {
-  const filteredbyRaiting = allRestaurents.filter(
-    (restro) => restro.raiting === parseInt(e.target.value)
-  );
+  const filteredbyRaiting = allRestaurents.filter((restro) => restro.raiting === parseInt(e.target.value));
   filterdView(filteredbyRaiting);
 }
 
 //sort restaurents by dishes
 function sortByDishes(e) {
-  const filteredbyDishes = allRestaurents.filter(
-    (restro) => restro.type === e.target.value
-  );
+  const filteredbyDishes = allRestaurents.filter((restro) => restro.type === e.target.value);
   filterdView(filteredbyDishes);
 }
 
 //sort restaurents by price
 function sortByPrice(e) {
-  const filteredbyPrice = allRestaurents.filter(
-    (restro) => restro.price < e.target.value
-  );
+  const filteredbyPrice = allRestaurents.filter((restro) => restro.price < e.target.value);
   filterdView(filteredbyPrice);
 }
 
@@ -95,7 +87,7 @@ function filterdView(filterdArray) {
   filterdArray.length > 0
     ? renderRestaurentCardsView(filterdArray)
     : (restaurants_wrapper.innerHTML = `<p class="col-sm-12"> No result found !</p>`);
-}
+  }
 
 //Search restaurents
 function searchRestaurents() {
@@ -111,9 +103,8 @@ function searchRestaurents() {
 //Genrate start rating based on number argument
 function raitingStar(raitingNumber) {
   let raiting_list = "";
-  for (let i = 0; i < raitingNumber; i++) {
+  for (let i = 0; i < raitingNumber; i++)
     raiting_list += `<li><i class="fa fa-star" aria-hidden="true"></i></li>`;
-  }
   return raiting_list;
 }
 
@@ -153,6 +144,7 @@ function getFavList() {
   document.querySelector('.count').textContent = favList.length
 }
 
+//on click add card to fav and if already exists remove the card
 function addToFav(id, index) {
   let getAllFavList = getLocalStrogeItems();
   let currentIndex = getAllFavList.findIndex(
@@ -166,6 +158,7 @@ function addToFav(id, index) {
   getFavList();
 }
 
-fetchStores();
-initializeLocalStroge();
-getFavList();
+
+fetchStores();   //Network call 
+initializeLocalStroge();  //Initialize LocalStroge
+getFavList(); // on load getting fav item list
