@@ -34,6 +34,10 @@ h1 {
     color: #231b1b;
 }
 
+.logo img {
+    width: 130px;
+}
+
 
 .filter-group h3 {
     font-size: 15px;
@@ -116,7 +120,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 
 footer {
     background: #292929;
-    padding: 15px 0;
+    padding: 20px 0;
     text-align: center;
     color: #fff;
 }
@@ -154,4 +158,20 @@ select {
     width: 18px;
     position: relative;
     top: -2px;
+}
+
+.save-restro {
+    font-family: 'Comfortaa', cursive;
+    display: inline-block;
+    font-size: 13px;
+   cursor: pointer;
+}
+
+.add-fav {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
 }

@@ -5,6 +5,7 @@ const dishes = document.querySelector('#dishes')
 const price = document.querySelector('#price')
 const search = document.querySelector('#search')
 let allRestaurents = []
+let favRestaurents = []
 
   //Server calling for fetching restaurents 
 async function fetchStores(){
@@ -29,7 +30,8 @@ function renderHTML(restro){
        </ul>
             <img class="w-100" src=${restro.photograph} alt="">
         </div>
-        <div class="restaurent-info p-3">
+        <div class="restaurent-info p-3 position-relative">
+          <div class="add-fav"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
             <p class="mb-0 location">${restro.location}</p>
             <p class="mb-1">${restro.address}</p>
             <p class="mb-0 price">${restro.price}</p>
@@ -45,7 +47,6 @@ function renderRestaurentCardsView(restaurants) {
 }
 
 
-
 //Sort By Raiting
 raiting.addEventListener('change', sortByRaiting)
 
@@ -57,6 +58,7 @@ price.addEventListener('change', sortByPrice)
 
 //Search by Keywords
 search.addEventListener('input', searchRestaurents)
+
 
 function sortByRaiting(e){
   const filteredbyRaiting = allRestaurents.filter(restro => (restro.raiting === parseInt(e.target.value)))
