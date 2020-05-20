@@ -17,7 +17,7 @@ async function fetchStores(){
 }
 
 //Render HTML Source
-function renderHTML(restro){
+function renderHTML(restro, index){
   restaurants_wrapper.insertAdjacentHTML(
     "afterbegin",
     `<div class="col-sm-4">
@@ -31,7 +31,7 @@ function renderHTML(restro){
             <img class="w-100" src=${restro.photograph} alt="">
         </div>
         <div class="restaurent-info p-3 position-relative">
-          <div class="add-fav"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
+          <div class="add-fav" onclick=addToFav(${restro.id},${index})><i class="fa fa-heart-o" aria-hidden="true"></i></div>
             <p class="mb-0 location">${restro.location}</p>
             <p class="mb-1">${restro.address}</p>
             <p class="mb-0 price">${restro.price}</p>
@@ -58,6 +58,9 @@ price.addEventListener('change', sortByPrice)
 
 //Search by Keywords
 search.addEventListener('input', searchRestaurents)
+
+// Heart icon toggle 
+restaurants_wrapper.addEventListener('click', addedToFav)
 
 
 function sortByRaiting(e){
@@ -97,5 +100,23 @@ function raitingStar(raitingNumber) {
   }
   return raiting_list;
 }
+
+function addedToFav(e) {
+  const classes = e.target.classList;
+  if (classes.contains("fa"))
+    classes.contains("fa-heart-o")
+      ? classes.remove("fa-heart-o") || classes.add("fa-heart")
+      : classes.remove("fa-heart") || classes.add("fa-heart-o");
+}
+
+function addToFav(id, index){
+  if(favRestaurents.indexOf(allRestaurents[index]) == -1)
+    favRestaurents.push(allRestaurents[index])
+   else {
+    let itemIndex = favRestaurents.findIndex(i => i.id === id)
+    favRestaurents.splice(itemIndex,1)
+  }
+}
+
 
 fetchStores()
