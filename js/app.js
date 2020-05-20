@@ -9,7 +9,7 @@ let favRestaurents = [];
 
 //Server calling for fetching restaurents
 async function fetchStores() {
-  const responce = await fetch("http://shorturl.at/dgqyJ");
+  const responce = await fetch("https://raw.githubusercontent.com/amirSohel007/restaurent-app/master/restaurents.json");
   const data = await responce.json();
   //assign the data to allRestaurents array
   allRestaurents = data.restaurants;
